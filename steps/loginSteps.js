@@ -32,9 +32,9 @@ When("user enters valid password {string}", async function (string) {
   // await BrowserUtility.sleep(2);
 });
 
-When("user clicks the login button", async function () {
-  await PageManager.loginPage.clickLoginButton();
-  // await BrowserUtility.sleep(2);
+When("user clicks the login button for invalid credentials", async function () {
+ await PageManager.loginPage.clickLoginButton();
+ await BrowserUtility.sleep(2);
 });
 
 Then("user login succussfully to the homepage", async function () {
@@ -42,4 +42,23 @@ Then("user login succussfully to the homepage", async function () {
   await expect(PageManager.page).toHaveTitle("Library");
   
   // await BrowserUtility.sleep(2);
+});
+
+When('user enters invalid username {string}', async function (string) {
+  await PageManager.loginPage.enterUsername(string);
+});
+
+When('user enters invalid password {string}', async function (string) {
+  await PageManager.loginPage.enterPassword(string);
+});
+
+When('user clicks the login button', async function () {
+  await PageManager.loginPage.clickLoginButton();
+  // Implement with actual logic
+});
+
+Then('user sees a {string} error pop-up message', async function (string) {
+  await expect(PageManager.loginPage.loginErrorMessage).toHaveText(string);
+
+  // Implement with actual logic
 });
