@@ -1,3 +1,4 @@
+
 import {BasePage} from "./BasePage.js";
 
 export class LoginPage extends BasePage {
@@ -55,4 +56,19 @@ export class LoginPage extends BasePage {
   async clickLoginButton() {
     await this.loginButton.click();
   }
+  async login(user_type) {
+    const lowerCaseUserType = user_type.toLowerCase();
+    if (lowerCaseUserType == "student") {
+        await this.enterUsername(this.studentUsername);
+        await this.enterPassword(this.studentPassword);
+        await this.clickLoginButton();
+    } else if (lowerCaseUserType == "admin") {
+        await this.enterUsername(this.adminUsername);
+        await this.enterPassword(this.adminPassword);
+        await this.clickLoginButton();
+    } else {
+        throw new Error('Invalid user type. Please choose Student or Admin');}
+
+  }
 }
+

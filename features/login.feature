@@ -1,4 +1,4 @@
-#@lib-01
+@lib-01
 Feature: Login to the application
   As a user, I want to login so that I can access the app's main features.
 
@@ -18,7 +18,7 @@ Feature: Login to the application
     Examples:
       | user-type |
       | admin     |
-      | studen    |
+      | student    |
 
 
 # TODO: Verify users can not login with invalid credentials
@@ -30,7 +30,7 @@ Scenario Outline: Verify users cannot login with invalid credentials
   Then user sees a "Sorry, Wrong Email or Password" error pop-up message
   Examples:
     | invalid-username | invalid-password |
-    | library@student | password123 |
+    | student@library| libraryUse |
     | library@cydeo | libraryPassword |
 
 # TODO: Verify users are not allowed to login without any credentials
