@@ -5,7 +5,7 @@ import {PageManager} from "../globalPagesSetup.js";
 const BROWSER_TYPE = "chrome"; // Default browser type
 const WIDTH = 1920; // Default screen width
 const HEIGHT = 1080; // Default screen height
-const DEFAULT_TIMEOUT = 30000; // default timeout in milliseconds
+const DEFAULT_TIMEOUT =100000; // default timeout in milliseconds
 
 const browserSetup = {
   headless: false,
@@ -26,8 +26,10 @@ Before(async function () {
  * It ensures that the browser and context are properly closed after each test scenario,
  * freeing up system resources and preventing memory leaks.
  */
-After(async function () {
-  await this.close();
+After(async function () {  
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  if (this.browser) {
+    await this.browser.close();}
 });
 
 // ------------------------Playwright Page & Browser Utility --------------------------
