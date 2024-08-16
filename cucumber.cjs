@@ -10,5 +10,6 @@ module.exports = {
     import: ["./steps/**/*.js", "./hooks/**/*.js"],
     format: ["progress-bar", "html:test-reports/cucumber-report.html"],
     formatOptions: { snippetInterface: "async-await" },
+  
   },
 };
